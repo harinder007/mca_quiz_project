@@ -93,105 +93,133 @@
     let queNo = 0;
     let result = 0;
 
-    let javaQuestionsNormal = [
-      {
-        que: "JavaScript is the programming language of the_____.",
-        option: ["Desktop", "Mobile", "Web", "Server"],
-        ans: "Web"
-      },
-      {
-        que: "Which type of JavaScript language is _____?",
-        option: ["Object-oriented", "Functional programming", "Object-based", "All of the above"],
-        ans: "Object-based"
-      },
+    let javaQuestionsNormal = [{
+      que: "What is the work of <address> element in HTML5?",
+      option: [" contains IP address", "contains home address", "contains url", "contains contact details for author"],
+      ans: "contains contact details for authorm"
+    }, {
+      que: "Which of the following tag is used to embed css in html page?",
+      option: ["<css>", "<!DOCTYPE html>", "<script>", "<style>"],
+      ans: "<style>"
+    },
+    {
+      que: "Which of the following CSS selectors are used to specify a group of elements?",
+      option: ["tag", "id", "class", "both class and tag"],
+      ans: "class"
+    },
+    {
+      que: "Which of the following has introduced text, list, box, margin, border, color, and background properties?",
+      option: ["HTML", "PHP", "CSS", "Ajax"],
+      ans: "CSS"
+    },
+    {
+      que: "Which of the following CSS framework is used to create a responsive design?",
+      option: ["django", "rails", "larawell", "bootstrap"],
+      ans: "bootstrap"
+    },
+    {
+      que: "Which of the following type of HTML tag is used to define an internal style sheet?",
+      option: ["<script>", "<link>", "<class>", "<style>"],
+      ans: "<style>"
+    },
+    {
+      que: "Which of the following CSS property is used to make the text bold?",
+      option: ["text-decoration: bold", "font-weight: bold", "font-style: bold", "text-align: bold"],
+      ans: "font-weight: bold"
+    },
+    {
+      que: "Which of the following CSS style property is used to specify an italic text?",
+      option: ["style", "font", "font-style", "@font-face"],
+      ans: "font-style"
+    },
+    {
+      que: "Which of the following are the CSS Extension Prefixes for Webkit?",
+      option: ["-chrome", "-web", "-o-", "-webkit"],
+      ans: "-webkit"
+    },
+    {
+      que: "Which of the following is the first CSS specification to become an official W3C Recommendation?",
+      option: ["CSS level 2", "(X)HTML CSS", "CSS level 1", "CSS level 2.1"],
+      ans: "CSS level 1"
+    },
+    {
+      que: "Which of the following function defines a linear gradient as a CSS image?",
+      option: ["gradient()", "linear-gradient()", "grayscale()", "image()"],
+      ans: "linear-gradient"
+    },
+    {
+      que: "Which of the following is not the property of the CSS box model?",
+      option: ["margin", "color", "width", "height"],
+      ans: "color"
+    },
+    {
+      que: "Which of the following CSS property is used to specify table borders in CSS?",
+      option: ["table:border", "table", "border", "none of the mentioned"],
+      ans: "border"
+    },
+    {
+      que: "Which of the following property is used to align the text in a table?",
+      option: ["text-align", "align", "text", "none of the mentioned"],
+      ans: "text-align"
+    },
+    {
+      que: "Who is the father of HTML?",
+      option: ["Rasmus Lerdorf", "Tim Berners-Lee", "Brendan Eich", "Sergey Brin"],
+      ans: "Tim Berners-Lee"
+    },
 
-      {
-        que: "Which symbol is used separate JavaScript statements?",
-        option: ["Comma (,)", "Colon (:)", "Hyphen (_)", "Semicolon (;)"],
-        ans: "Semicolon (;)"
-      },
+    {
+      que: "HTML stands for __________",
+      option: ["HyperText Markup Language", "HyperText Machine Language", "HyperText Marking Language", "HighText Marking Language"],
+      ans: "HyperText Markup Language"
+    },
+    {
+      que: "What is the correct syntax of doctype in HTML5?",
+      option: ["</doctype html>", "<doctype html>", "<doctype html!>", "<!doctype html>"],
+      ans: "<!doctype html>"
+    },
+    {
+      que: "Which of the following is used to read an HTML page and render it?",
+      option: ["Web server", "Web network", "Web browser", "Web matrix"],
+      ans: "Web browser"
+    },
 
-      {
-        que: "JavaScript ignores?",
-        option: ["newlines", "tabs", "spaces", "All of the above"],
-        ans: "All of the above"
-      },
-      {
-        que: "Which JavaScript method is used to access an HTML element by id?",
-        option: ["getElementById()", "getElement(id)", "getElementById(id)", "elementById(id)"],
-        ans: "getElementById(id)"
-      },
-      {
-        que: "Which property is used to define the HTML content to an HTML element with a specific id?",
-        option: ["innerText", "innerContent", "elementText", "innerHTML"],
-        ans: "innerHTML"
-      },
-      {
-        que: "Which JavaScript method is used to write HTML output?",
-        option: ["document.write()", "document.output()", "console.log()", "document.writeHTML()"],
-        ans: "document.write()"
-      },
-      {
-        que: "JavaScript method is used to write on browser's conWhich sole?",
-        option: ["console.write()", "console.output()", "console.log()", "console.writeHTML()"],
-        ans: "console.log()"
-      },
-      {
-        que: "Which JavaScript method is used to write into an alert box?",
-        option: ["window.alertHTML()", "window.alert()", "window.alertBox()", "window.alertContent()"],
-        ans: "window.alert()"
-      },
-      {
-        que: "In JavaScript, single line comment begins with ___.",
-        option: ["#", "/*", "$", "//"],
-        ans: "//"
-      },
-      {
-        que: "In JavaScript, multi-line comments start with __ and end with ___.",
-        option: ["/* and */", "<!—and -->", "## and ##", "// and //"],
-        ans: "/* and */"
-      },
-      {
-        que: "Which JavaScript keyword is used to declare a variable?",
-        option: ["Var", "var", "Let", "All of the above"],
-        ans: "var"
-      },
-      {
-        que: "How many keywords are there in JavaScript to declare variables or constants?",
-        option: ["1", "3", "2", "4"],
-        ans: "3"
-      },
-      {
-        que: "The const keyword is used to define a ______.",
-        option: ["Function scopes variable", "Block scoped variable", "Constant", "Constant with no initial value"],
-        ans: "Constant"
-      },
-      {
-        que: "What is the default value of an uninitialized variable?",
-        option: ["0", "undefined", "null", "NaN"],
-        ans: "undefined"
-      },
-      {
-        que: "JavaScript arrays are written with _____.",
-        option: ["round brackets ()", "curly brackets {}", "double quotes \"\"", "square brackets []"],
-        ans: "square brackets []"
-      },
+    {
+      que: "Which of the following tag is used for inserting the largest heading in HTML?",
+      option: ["head", "<h1>", "<h6>", "heading"],
+      ans: "<h1>"
+    },
 
-      {
-        que: "JavaScript objects are written with _____.",
-        option: ["round brackets ()", "curly brackets {}", "double quotes \"\"", "square brackets []"],
-        ans: "curly brackets {}"
-      },
-      {
-        que: "Which JavaScript operator is used to determine the type of a variable?",
-        option: ["typeof", "TypeOf", "typeOf", "sizeof"],
-        ans: "typeof"
-      },
-      {
-        que: "Which property is used to get the length of a string in JavaScript?",
-        option: ["strlen", "len", "length", "Length"],
-        ans: "length"
-      },
+    {
+      que: "In which part of the HTML metadata is contained?",
+      option: ["head tag", "title tag", "html tag", "body tag"],
+      ans: "head tag"
+    },
+
+    {
+      que: "Which element is used to get highlighted text in HTML5?",
+      option: ["<u>", "<mark>", "<highlight>", "<b>"],
+      ans: "<mark>"
+    },
+
+    {
+      que: "Which of the following is not a HTML5 tag?",
+      option: ["<track>", "<video>", "<slider>", "<source>"],
+      ans: "<slider>"
+    },
+
+    {
+      que: "Which of the following elements in HTML5 defines video or movie content?",
+      option: ["<video>", "<movie>", "<audio>", "<media>"],
+      ans: "<video>"
+    },
+
+    {
+      que: "Which of the following is not the element associated with the HTML table layout?",
+      option: ["alignment", "color", "size", "spanning"],
+      ans: "color"
+    },
+
 
     ]
 

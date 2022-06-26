@@ -10,13 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
+
 <body>
     <div class="container">
         <header>
             <nav>
                 <ul>
                     <li><a href="#" id="item1">Home</a></li>
-                    <li><a href="#" id="item2">Leaderboard</a></li>
                     <li><a href="#" id="item3">About</a></li>
                 </ul>
             </nav>
@@ -38,8 +38,8 @@
             </div>
         </footer>
     </div>
-    <script src="common.js"></script>
-    <script src="./assets/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='javascript/common.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/bootstrap.bundle.min.js') }}"></script>
     <script>
         let name = localStorage.getItem('name');
 
@@ -92,218 +92,218 @@
         let optionChoosed;
         let queNo = 0;
         let result = 0;
-        
+
         let javaQuestionsNormal = [{
             que: "Who invented C Language.?",
             option: ["Charles Babbage", "Dennis Ritchie", "Grahambel", "Steve Jobs "],
             ans: "Dennis Ritchie"
         },
- {
+        {
             que: "C Language is a successor to which language.?",
             option: ["D Language", "B Language", "BASIC", "FORTRAN "],
             ans: "B Language"
         },
- {
+        {
             que: "C is a which level language.?",
             option: ["High Level", "Low + High", "Low Level", "None "],
             ans: "High Level"
         },
- {
+        {
             que: "Low level language is .?",
             option: ["Human readable like language.", "language with big program size.", "language with small program size.", "Difficult to understand and readability is questionable."],
             ans: "Difficult to understand and readability is questionable."
         },
- {
+        {
             que: "High level language is a .?",
             option: ["Human readable like language.", "language with small program size.", "language with big program size.", "language which is difficult to understand and not human readable."],
             ans: "Human readable like language"
         },
- {
+        {
             que: "C is _______ type of programming language.?",
             option: ["Object Oriented", "Procedural", "Bit level language", "Functional"],
             ans: "Procedural"
         },
- {
+        {
             que: "What is the present C Language Standard.?",
             option: ["C99 ISO/IEC 9899:1999", "C11 ISO/IEC 9899:2011", "C05 ISO/IEC 9899:2005", "C10 ISO/IEC 9899:2010"],
             ans: "C11 ISO/IEC 9899:2011"
         },
- {
+        {
             que: "What are the new features of C11 or ISO IEC 9899 2011 standard.?",
             option: ["Multi Threading, Anonymous Unions, quick_exit", "Type generic Macros, Static Assertions", "Multi Threading, Anonymous Unions, quick_exit", "All"],
             ans: "All"
         },
- {
+        {
             que: "C language was invented in which laboratories.?",
             option: ["Unilever Labs", "AT&T Bell Labs", "IBM Labs", "Verizon Labs"],
             ans: "AT&T Bell Labs"
         },
- {
+        {
             que: "BCPL Language is also called..?",
             option: ["C Language", "B Language", "D Language", "None"],
             ans: "None"
         },
- {
+        {
             que: "C language was invented to develop which Operating System.?",
             option: ["Unix", "Linux", "Ubuntu", "Android "],
             ans: "Unix"
         },
- {
+        {
             que: "C language was invented in the year.?",
             option: ["1999", "1972", "1978", "1990"],
             ans: "1972"
         },
- {
+        {
             que: "C language is used in the development of .?",
             option: ["Databases", "Graphic applications", "Word Processors", "All of the above"],
             ans: "All of the above"
         },
- {
+        {
             que: "A C program is a combination of.?",
             option: ["Statements", "Functions", "Variables", "All of the above"],
             ans: "All of the above"
         },
- {
+        {
             que: "Which of the following is not a valid C variable name?",
             option: ["int number;", "float rate;", "int variable_count;", "int $main;"],
             ans: "int $main;"
         },
- {
+        {
             que: "All keywords in C are in ____________",
             option: ["LowerCase letters", "UpperCase letters", "CamelCase letters", "None of the mentioned "],
             ans: "LowerCase letters"
         },
-   ,k7u {
+        {
             que: "Which is valid C expression?",
             option: ["int my_num = 100,000;", "int my_num = 100000;", "int my num = 1000;", "int $my_num = 10000; "],
             ans: "int my_num = 100000;"
         },
- {
+        {
             que: "Which of the following cannot be a variable name in C?",
             option: ["volatile", "true", "friend", "export"],
             ans: "volatile"
         },
- {
+        {
             que: "What is short int in C programming?",
             option: ["The basic data type of C", "Short is the qualifier and int is the basic data type", "Qualifier", "All of the mentioned "],
             ans: "Short is the qualifier and int is the basic data type"
         },
- {
+        {
             que: "Which of the following declaration is not supported by C language?",
             option: ["String str;", "char *str;", "float str = 3e2;", "float str = 3e2;"],
             ans: "String str;"
         },
- {
+        {
             que: "Which keyword is used to prevent any changes in the variable within a C program?",
             option: ["immutable", "mutable", "volatile", "const"],
             ans: "const"
         },
- {
+        {
             que: "What is the result of logical or relational expression in C?",
             option: ["True or False", "0 or 1", "0 if an expression is false and any positive number if an expression is true", "None of the mentioned "],
             ans: "0 or 1"
         },
- {
+        {
             que: "Which of the following typecasting is accepted by C language?",
             option: ["Widening conversions", "Widening & Narrowing conversions", "None of the mentioned", "Narrowing conversions"],
             ans: "Widening & Narrowing conversions"
         },
- {
+        {
             que: "Where in C the order of precedence of operators do not exist?",
             option: ["Within conditional statements, if, else", "Within while, do-while", "Within a macro definition", "None of the mentioned "],
             ans: "None of the mentioned"
         },
- {
+        {
             que: "Which of the following is NOT possible with any 2 operators in C?",
             option: ["Different precedence, same associativity", "Different precedence, different associativity", "Same precedence, different associativity", "All of the mentioned"],
             ans: "Same precedence, different associativity"
         },
- {
+        {
             que: "What is an example of iteration in C?",
             option: ["for", "while", "do-while", "all of the mentioned"],
             ans: "all of the mentioned"
         },
- {
+        {
             que: "Functions can return enumeration constants in C?",
             option: ["true", "false", "depends on the compiler", "depends on the standard"],
             ans: "true"
         },
- {
+        {
             que: "Functions in C Language are always _________",
             option: ["Internal", "External", "Both Internal and External", "External and Internal are not valid terms for functions"],
             ans: "External"
         },
- {
+        {
             que: "Which of following is not accepted in C?",
             option: ["static a = 10; //static as", "static int func (int); //parameter as static", "static static int a; //a static variable prefixed with static", "all of the mentioned "],
             ans: "static static int a; //a static variable prefixed with static"
         },
- {
+        {
             que: "Property which allows to produce different executable for different platforms in C is called?",
             option: ["File inclusion", "Selective inclusion", "Conditional compilation", "Recursive macros"],
             ans: "Conditional compilation"
         },
- {
+        {
             que: "What is #include <stdio.h>?",
             option: ["Preprocessor directive", "Inclusion directive", "File inclusion directive", "None of the mentioned "],
             ans: "Preprocessor directive"
         },
- {
+        {
             que: "C preprocessors can have compiler specific features.",
             option: ["True", "False", "Depends on the standard", "Depends on the platform"],
             ans: "True"
         },
- {
+        {
             que: "Which of the following are C preprocessors?",
             option: ["#ifdef", "#define", "#endif", "all of the mentioned"],
             ans: "all of the mentioned"
         },
-  {
+        {
             que: "The C-preprocessors are specified with _________ symbol.",
             option: ["#", "$", "” ”", "& "],
             ans: "#"
         },
- {
+        {
             que: "How many number of pointer (*) does C have against a pointer variable declaration?",
             option: ["7", "127", "255", "No limits "],
             ans: "No limits"
         },
- {
+        {
             que: "Which of the following is not possible statically in C language?",
             option: ["Jagged Array", "Rectangular Array", "Cuboidal Array", "Multidimensional Array "],
             ans: "Jagged Array"
         },
- {
+        {
             que: "Which of the following return-type cannot be used for a function in C?",
             option: ["char *", "struct", "void", "none of the above"],
             ans: "none of the above"
         },
- {
+        {
             que: "The standard header _______ is used for variable list arguments (…) in C.",
             option: ["<stdio.h >", "<stdlib.h>", "<math.h>", "<stdarg.h>"],
             ans: "<stdarg.h>"
         },
- {
+        {
             que: "When a C program is started, O.S environment is responsible for opening file and providing pointer for that file?",
             option: ["Standard input", "Standard output", "Standard error", "All of the mentioned"],
             ans: "All of the mentioned"
         },
- {
+        {
             que: "In C language, FILE is of which data type?",
             option: ["int", "char *", "struct", "None of the mentioned"],
             ans: "struct"
         },
- {
+        {
             que: "What is the sizeof(char) in a 32-bit C compiler?",
             option: ["1 bit", "2 bits", "1 Byte", "2 Bytes"],
             ans: "1 Byte"
         },
- {
+        {
             que: "Which of the following is not an operator in C?",
             option: ["sizeof()", ",", "~", "None of the mentioned "],
             ans: "None of the mentioned"
         },
- {
+        {
             que: "scanf() is a predefined function in______header file",
             option: ["stdlib. h", "stdio. h", "stdarg. h", "ctype. h"],
             ans: "stdio. h"
@@ -415,4 +415,5 @@
         }
     </script>
 </body>
+
 </html

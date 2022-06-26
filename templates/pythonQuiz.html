@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/bootstrap.min.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#" id="item1">Home</a></li>
+          <li><a href="#" id="item3">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div id="welcome"></div>
+    <div id="que-body"></div>
+    <div id="result" class="hide"><span id="result-text"></span><button id="try-again-btn"
+        class="btn btn-dark my-2 p-2">Try again</button></div>
+    <div class="popup hide">
+      <form action="">
+        <label for="">Enter your Name</label>
+        <input id="enter-name" type="text" class="form-control my-2">
+        <button id="start" class="btn btn-dark my-2 p-2">START</button>
+      </form>
+    </div>
+    <footer>
+      <div class="copyright">
+        Copyright © 2022 Harinder_project - All rights reserved.
+      </div>
+    </footer>
+  </div>
+  <script src="{{ url_for('static', filename='javascript/common.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/bootstrap.bundle.min.js') }}"></script>
+  <script>
+    let name = localStorage.getItem('name');
+
+    function shuffle(array) {
+      let currentIndex = array.length, randomIndex;
+
+      // While there remain elements to shuffle.
+      while (currentIndex != 0) {
+
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+          array[randomIndex], array[currentIndex]];
+      }
+      return array;
+    }
+
+    document.getElementById('start').addEventListener('click', () => {
+      name = document.getElementById('enter-name').value;
+      localStorage.setItem("name", name);
+      console.log(name);
+      document.getElementsByClassName("popup")[0].className = "popup hide";
+      localStorage.setItem("isQuizGoing", true);
+      localStorage.setItem("currentQue", 1);
+      localStorage.setItem("score", 0);
+      localStorage.setItem("result", false);
+      location.reload();
+    }
+    )
+    document.getElementById('try-again-btn').addEventListener('click', () => {
+      localStorage.setItem("isQuizGoing", true);
+      localStorage.setItem("currentQue", 1);
+      localStorage.setItem("score", 0);
+      localStorage.setItem("result", false);
+      javaQuestions = shuffle(javaQuestions);
+      location.reload();
+    }
+    )
+    const isQuizGoing = localStorage.getItem("isQuizGoing") ? localStorage.getItem("isQuizGoing") : false;
+    let currentQue = localStorage.getItem("currentQue") ? localStorage.getItem("currentQue") : null;
+    let score = localStorage.getItem("score") ? localStorage.getItem("score") : null;
+    console.log(currentQue);
+    console.log(isQuizGoing);
+    document.getElementById('welcome').innerHTML = name && 'Hello ' + localStorage.getItem('name')
+    //storing java quiz question and answer
+    let userInput = false;
+    let optionChoosed;
+    let queNo = 0;
+    let result = 0;
+
+    let javaQuestionsNormal = [
+      {
+        que: "Who developed Python Programming Language?",
+        option: ["Wick van Rossum", "Rasmus Lerdorf", "Guido van Rossum", "Niene Stom"],
+        ans: "Guido van Rossum"
+      },
+
+      {
+        que: ". Which type of Programming does Python support?",
+        option: ["object-oriented programming", "structured programming", "functional programming", "all of the mentioned"],
+        ans: "all of the mentioned"
+      },
+
+
+      {
+        que: "Is Python case sensitive when dealing with identifiers?",
+        option: ["no", "yes", "machine dependent", "none of the mentioned"],
+        ans: "no"
+      },
+
+
+      {
+        que: "Which of the following is the correct extension of the Python file?",
+        option: [".python", ".pl", ".py", ".p"],
+        ans: ".py"
+      },
+
+
+      {
+        que: "Is Python code compiled or interpreted?",
+        option: ["Python code is both compiled and interpreted", "Python code is neither compiled nor interpreted", "Python code is only compiled", "Python code is only interpreted"],
+        ans: "Python code is neither compiled nor interpreted"
+      },
+
+      {
+        que: "All keywords in Python are in _________",
+        option: ["Capitalized", "lower case", "UPPER CASE", "None of the mentioned"],
+        ans: "None of the mentioned"
+      },
+
+
+      {
+        que: "What will be the value of the following Python expression?4 + 3 % 5",
+        option: ["7", "2", "4", "1"],
+        ans: "7"
+      },
+
+
+      {
+        que: "Which of the following is used to define a block of code in Python language?",
+        option: ["Indentation", "Key", "Brackets", "All of the mentioned"],
+        ans: ") Indentation"
+      },
+
+
+      {
+        que: ". Which keyword is used for function in Python language?",
+        option: ["Function", "Def", "Fun", "Define"],
+        ans: "Def"
+      },
+
+
+      {
+        que: "Which of the following character is used to give single-line comments in Python?",
+        option: ["//", "#", "!", "/*"],
+        ans: "#"
+      },
+
+      {
+        que: "What will be the output of the following Python code snippet if x=1?x<<2",
+        option: ["4", "2", "1", "8"],
+        ans: "4"
+      },
+
+
+
+      {
+        que: "Which of the following functions is a built-in function in python?",
+        option: ["factorial()", "print()", "seed()", "sqrt()"],
+        ans: "print()"
+      },
+
+      {
+        que: "Which of the following is the use of id() function in python?",
+        option: ["Every object doesn’t have a unique id", "Id returns the identity of the object", "All of the mentioned", "None of the mentioned"],
+        ans: "Id returns the identity of the object"
+      },
+
+
+      {
+        que: "What will be the output of the following Python function?min(max(False,-3,-4), 2,7)",
+        option: ["-4", "-3", "2", "False"],
+        ans: "False"
+      },
+
+      {
+        que: "Which of the following is not a core data type in Python programming?",
+        option: ["Tuples", "Lists", "Class", "Dictionary"],
+        ans: "Class"
+      },
+
+
+      {
+        que: "What will be the output of the following Python expression if x=56.236?print(\"%.2f\"%x)",
+        option: ["56.236", ") 56.23", "56.0000", "56.24"],
+        ans: ""
+      },
+
+      {
+        que: "Which of these is the definition for packages in Python?",
+        option: ["A set of main modules", "A folder of python modules", "A number of files containing Python definitions and statements", "A set of programs making use of Python modules"],
+        ans: "A folder of python modules"
+      },
+
+
+      {
+        que: "What will be the output of the following Python function?len([\"hello\",2, 4, 6])",
+        option: ["Error", "6", "4", "3"],
+        ans: "4"
+      },
+
+
+      {
+        que: "What will be the output of the following Python code?x = 'abcd'for i in x:print(i.upper())",
+        option: ["a B C D", "a b c d", "error", "A B C D"],
+        ans: "A B C D"
+      },
+
+
+
+      {
+        que: "What will be the output of the following Python code snippet?for i in [1, 2, 3, 4][::-1]:print (i)",
+        option: ["4 3 2 1", "error", "1 2 3 4", "none of the mentioned"],
+        ans: "4 3 2 1"
+      },
+
+
+
+
+    ]
+
+    javaQuestions = shuffle(javaQuestionsNormal);
+
+    let question = document.createElement('div');
+    question.className = "question hide";
+    let queElement = document.createElement('label');
+    let ansElement = document.createElement('ol');
+    let op1 = document.createElement('li');
+    let op2 = document.createElement('li');
+    let op3 = document.createElement('li');
+    let op4 = document.createElement('li');
+    queElement.className = "que";
+    ansElement.className = "ans";
+    op1.id = "op1";
+    op2.id = "op2";
+    op3.id = "op3";
+    op4.id = "op4";
+    op1.className = "option form-control";
+    op2.className = "option form-control";
+    op3.className = "option form-control";
+    op4.className = "option form-control";
+    question.appendChild(queElement);
+    question.appendChild(ansElement);
+    ansElement.appendChild(op1);
+    ansElement.appendChild(op2);
+    ansElement.appendChild(op3);
+    ansElement.appendChild(op4);
+
+    const loadQuestion = (n) => {
+      let item = javaQuestions[n - 1];
+      if (n <= 10) {
+        queElement.innerText = n + ". " + item.que;
+        item.option.map((item2, i) => {
+          ansElement.childNodes[i].innerText = item2;
+        }
+        )
+      } else {
+        let element = document.getElementById('result-text');
+        let element2 = document.getElementById('result');
+        element.innerText = localStorage.getItem("name") + " your score is " + localStorage.getItem("score") + " out of 10";
+        localStorage.setItem("result", true);
+        localStorage.setItem("isQuizGoing", false);
+        question.className = "question hide";
+        element2.className = "show";
+      }
+    }
+    console.log(document.getElementById('result'));
+    currentQue && isQuizGoing === 'true' && loadQuestion(currentQue);
+
+    const nextQuestion = (option) => {
+      let item = javaQuestions[currentQue - 1];
+      console.log(item.ans);
+      console.log(item.option[option]);
+      if (item) {
+        if (item.ans === item.option[option]) {
+          score++;
+          localStorage.setItem("score", score);
+        }
+      }
+      currentQue++;
+      localStorage.setItem("currentQue", currentQue);
+      console.log(localStorage.getItem("score"));
+      console.log(localStorage.getItem("currentQue"));
+      loadQuestion(localStorage.getItem("currentQue"))
+    }
+
+    !isQuizGoing && shuffle(javaQuestions);
+    console.log(javaQuestions);
+    op1.addEventListener('click', () => {
+      optionChoosed = 0;
+      nextQuestion(optionChoosed)
+    })
+    op2.addEventListener('click', () => {
+      optionChoosed = 1;
+      nextQuestion(optionChoosed)
+    })
+    op3.addEventListener('click', () => {
+      optionChoosed = 2;
+      nextQuestion(optionChoosed)
+    })
+    op4.addEventListener('click', () => {
+      optionChoosed = 3;
+      nextQuestion(optionChoosed)
+    })
+    document.getElementById('que-body').appendChild(question);
+
+    if (isQuizGoing === 'true') {
+      question.className = "question show";
+    }
+    else {
+      question.className = "question hide";
+    }
+    if (!name) {
+      document.getElementsByClassName("popup")[0].className = "popup show";
+    }
+    if (localStorage.getItem("result") === 'true') {
+      let element = document.getElementById('result-text');
+      let element2 = document.getElementById('result');
+      console.log(element)
+      element.innerText = localStorage.getItem("name") + " your score is " + localStorage.getItem("score") + " out of 10";
+      element2.className = "show";
+    }
+  </script>
+</body>
+
+</html

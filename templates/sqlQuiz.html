@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/bootstrap.min.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#" id="item1">Home</a></li>
+          <li><a href="#" id="item3">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div id="welcome"></div>
+    <div id="que-body"></div>
+    <div id="result" class="hide"><span id="result-text"></span><button id="try-again-btn"
+        class="btn btn-dark my-2 p-2">Try again</button></div>
+    <div class="popup hide">
+      <form action="">
+        <label for="">Enter your Name</label>
+        <input id="enter-name" type="text" class="form-control my-2">
+        <button id="start" class="btn btn-dark my-2 p-2">START</button>
+      </form>
+    </div>
+    <footer>
+      <div class="copyright">
+        Copyright © 2022 Harinder_project - All rights reserved.
+      </div>
+    </footer>
+  </div>
+  <script src="{{ url_for('static', filename='javascript/common.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/bootstrap.bundle.min.js') }}"></script>
+  <script>
+    let name = localStorage.getItem('name');
+
+    function shuffle(array) {
+      let currentIndex = array.length, randomIndex;
+
+      // While there remain elements to shuffle.
+      while (currentIndex != 0) {
+
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+          array[randomIndex], array[currentIndex]];
+      }
+      return array;
+    }
+
+    document.getElementById('start').addEventListener('click', () => {
+      name = document.getElementById('enter-name').value;
+      localStorage.setItem("name", name);
+      console.log(name);
+      document.getElementsByClassName("popup")[0].className = "popup hide";
+      localStorage.setItem("isQuizGoing", true);
+      localStorage.setItem("currentQue", 1);
+      localStorage.setItem("score", 0);
+      localStorage.setItem("result", false);
+      location.reload();
+    }
+    )
+    document.getElementById('try-again-btn').addEventListener('click', () => {
+      localStorage.setItem("isQuizGoing", true);
+      localStorage.setItem("currentQue", 1);
+      localStorage.setItem("score", 0);
+      localStorage.setItem("result", false);
+      javaQuestions = shuffle(javaQuestions);
+      location.reload();
+    }
+    )
+    const isQuizGoing = localStorage.getItem("isQuizGoing") ? localStorage.getItem("isQuizGoing") : false;
+    let currentQue = localStorage.getItem("currentQue") ? localStorage.getItem("currentQue") : null;
+    let score = localStorage.getItem("score") ? localStorage.getItem("score") : null;
+    console.log(currentQue);
+    console.log(isQuizGoing);
+    document.getElementById('welcome').innerHTML = name && 'Hello ' + localStorage.getItem('name')
+    //storing java quiz question and answer
+    let userInput = false;
+    let optionChoosed;
+    let queNo = 0;
+    let result = 0;
+
+    let javaQuestionsNormal = [
+      {
+        que: "What is the full form of SQL?",
+        option: ["Structured Query List", "Structure Query Language", "Sample Query Language", "None of these."],
+        ans: "Structure Query Language"
+      },
+      {
+        que: "Which of the following is not a valid SQL type?",
+        option: ["FLOAT", "NUMERIC", "DECIMAL", "CHARACTER"],
+        ans: "DECIMAL"
+      },
+      {
+        que: "Which of the following is not a DDL command?",
+        option: ["TRUNCATE", "ALTER", "UPDATE", "CREATE"],
+        ans: "UPDATE"
+      },
+      {
+        que: "Which of the following are TCL commands?",
+        option: ["COMMIT and ROLLBACK", "UPDATE and TRUNCATE", "SELECT and INSERT", "GRANT and REVOKE"],
+        ans: "COMMIT and ROLLBACK"
+      },
+      {
+        que: "Which statement is used to delete all rows in a table without having the action logged?",
+        option: ["DELETE", "REMOVE", "DROP", "TRUNCATE"],
+        ans: "TRUNCATE"
+      },
+      {
+        que: "SQL Views are also known as",
+        option: ["Simple tables", "Virtual tables", "Complex tables", "Actual Tables"],
+        ans: "Virtual tables"
+      },
+      {
+        que: "How many Primary keys can have in a table?",
+        option: ["Only 1", "Only 2", "Depends on no of Columns", "Depends on DBA"],
+        ans: "Only 1"
+      },
+      {
+        que: "Which datatype can store unstructured data in a column?c",
+        option: ["CHAR", "RAW", "NUMERIC", "VARCHAR"],
+        ans: "RAW"
+      },
+      {
+        que: "Which of the following is not Constraint in SQL?",
+        option: ["Primary Key", "Not Null", "Check", "Union"],
+        ans: "Union"
+      },
+      {
+        que: "Which of the following is not a valid aggregate function?",
+        option: ["COUNT", "COMPUTE", "SUM", "MAX"],
+        ans: "COMPUTE"
+      },
+      {
+        que: "Which data manipulation command is used to combines the records from one or more tables?",
+        option: ["SELECT", "PROJECT", "JOIN", "PRODUCT"],
+        ans: "JOIN"
+      },
+      {
+        que: "Which operator is used to compare a value to a specified list of values?",
+        option: ["ANY", "BETWEEN", "ALL", "IN"],
+        ans: ""
+      },
+      {
+        que: "What operator tests column for absence of data",
+        option: ["NOT Operator", "Exists Operator", "IS NULL Operator", "None of the above"],
+        ans: "IS NULL Operator"
+      },
+      {
+        que: "In which of the following cases a DML statement is not executed?",
+        option: ["When existing rows are modified.", "When a table is deleted.", "When some rows are deleted.", "All of the above"],
+        ans: "When a table is deleted."
+      },
+      {
+        que: "What is returned by INSTR ('JAVAT POINT', 'P')?",
+        option: ["6", "7", "POINT", "JAVAT"],
+        ans: "7"
+      },
+      {
+        que: "A command that lets you change one or more field in a table is:",
+        option: ["INSERT", "MODIFY", "LOOK-UP", "All of the above"],
+        ans: "MODIFY"
+      },
+      {
+        que: "Which of the following is also called an INNER JOIN?",
+        option: ["SELF JOIN", "EQUI JOIN", "NON-EQUI JOIN", "None of the above"],
+        ans: "EQUI JOIN"
+      },
+      {
+        que: "_______ clause creates temporary relation for the query on which it is defined.",
+        option: ["WITH", "FROM", "WHERE", "SELECT"],
+        ans: "WITH"
+      },
+      {
+        que: "_________ command makes the updates performed by the transaction permanent in the database?",
+        option: ["ROLLBACK", "COMMIT", "TRUNCATE", "DELETE"],
+        ans: "COMMIT"
+      },
+      {
+        que: "Which command is used to change the definition of a table in SQL?",
+        option: ["CREATE", "UPDATE", "ALTER", "SELECT"],
+        ans: "ALTER"
+      },
+      {
+        que: "Which type of JOIN is used to returns rows that do not have matching values?",
+        option: ["Natural JOIN", "Outer JOIN", "EQUI JOIN", "All of the above"],
+        ans: "Outer JOIN"
+      },
+      {
+        que: "Which of the following is the basic approaches for joining tables?",
+        option: ["Union JOIN", "Natural JOIN", "Subqueries", "All of the above"],
+        ans: "All of the above"
+      },
+      {
+        que: "______ is NOT a type of constraint in SQL language?",
+        option: ["FOREIGN KEY", "PRIMARY KEY", "UNIQUE", "ALTERNATE KEY"],
+        ans: "ALTERNATE KEY"
+      },
+
+    ]
+
+    javaQuestions = shuffle(javaQuestionsNormal);
+
+    let question = document.createElement('div');
+    question.className = "question hide";
+    let queElement = document.createElement('label');
+    let ansElement = document.createElement('ol');
+    let op1 = document.createElement('li');
+    let op2 = document.createElement('li');
+    let op3 = document.createElement('li');
+    let op4 = document.createElement('li');
+    queElement.className = "que";
+    ansElement.className = "ans";
+    op1.id = "op1";
+    op2.id = "op2";
+    op3.id = "op3";
+    op4.id = "op4";
+    op1.className = "option form-control";
+    op2.className = "option form-control";
+    op3.className = "option form-control";
+    op4.className = "option form-control";
+    question.appendChild(queElement);
+    question.appendChild(ansElement);
+    ansElement.appendChild(op1);
+    ansElement.appendChild(op2);
+    ansElement.appendChild(op3);
+    ansElement.appendChild(op4);
+
+    const loadQuestion = (n) => {
+      let item = javaQuestions[n - 1];
+      if (n <= 10) {
+        queElement.innerText = n + ". " + item.que;
+        item.option.map((item2, i) => {
+          ansElement.childNodes[i].innerText = item2;
+        }
+        )
+      } else {
+        let element = document.getElementById('result-text');
+        let element2 = document.getElementById('result');
+        element.innerText = localStorage.getItem("name") + " your score is " + localStorage.getItem("score") + " out of 10";
+        localStorage.setItem("result", true);
+        localStorage.setItem("isQuizGoing", false);
+        question.className = "question hide";
+        element2.className = "show";
+      }
+    }
+    console.log(document.getElementById('result'));
+    currentQue && isQuizGoing === 'true' && loadQuestion(currentQue);
+
+    const nextQuestion = (option) => {
+      let item = javaQuestions[currentQue - 1];
+      console.log(item.ans);
+      console.log(item.option[option]);
+      if (item) {
+        if (item.ans === item.option[option]) {
+          score++;
+          localStorage.setItem("score", score);
+        }
+      }
+      currentQue++;
+      localStorage.setItem("currentQue", currentQue);
+      console.log(localStorage.getItem("score"));
+      console.log(localStorage.getItem("currentQue"));
+      loadQuestion(localStorage.getItem("currentQue"))
+    }
+
+    !isQuizGoing && shuffle(javaQuestions);
+    console.log(javaQuestions);
+    op1.addEventListener('click', () => {
+      optionChoosed = 0;
+      nextQuestion(optionChoosed)
+    })
+    op2.addEventListener('click', () => {
+      optionChoosed = 1;
+      nextQuestion(optionChoosed)
+    })
+    op3.addEventListener('click', () => {
+      optionChoosed = 2;
+      nextQuestion(optionChoosed)
+    })
+    op4.addEventListener('click', () => {
+      optionChoosed = 3;
+      nextQuestion(optionChoosed)
+    })
+    document.getElementById('que-body').appendChild(question);
+
+    if (isQuizGoing === 'true') {
+      question.className = "question show";
+    }
+    else {
+      question.className = "question hide";
+    }
+    if (!name) {
+      document.getElementsByClassName("popup")[0].className = "popup show";
+    }
+    if (localStorage.getItem("result") === 'true') {
+      let element = document.getElementById('result-text');
+      let element2 = document.getElementById('result');
+      console.log(element)
+      element.innerText = localStorage.getItem("name") + " your score is " + localStorage.getItem("score") + " out of 10";
+      element2.className = "show";
+    }
+  </script>
+</body>
+
+</html

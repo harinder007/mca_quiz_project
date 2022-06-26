@@ -1,19 +1,18 @@
     <!DOCTYPE html>
     <html lang="en">
     <head>
-      <link rel="stylesheet" href="../main.css" />
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
       <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Document</title>
-    <link rel="stylesheet" href="../about.css">    </head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">    </head>
     <body> 
       <header>
         <nav>
           <ul>
             <li><a href="#" id="item1">Home</a></li>
-            <li><a href="#" id="item2">Leaderboard</a></li>
             <li><a href="#" id="item3">About</a></li>
           </ul>
         </nav>
@@ -31,7 +30,7 @@
             <br />
           </div>
           <div id="developer">
-            <img src="images/profile.jpg" alt="profilePhoto" />
+            <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="profilePhoto" />
             <span id="developer-text">
               <span>Student MCA </span>
               <span>M.D. University Rohtak, Haryana</span>
