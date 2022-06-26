@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/bootstrap.min.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="#" id="item1">Home</a></li>
+                    <li><a href="#" id="item2">Leaderboard</a></li>
+                    <li><a href="#" id="item3">About</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div id="welcome"></div>
+        <div id="que-body"></div>
+        <div id="result" class="hide"><span id="result-text"></span><button id="try-again-btn"
+                class="btn btn-dark my-2 p-2">Try again</button></div>
+        <div class="popup hide">
+            <form action="">
+                <label for="">Enter your Name</label>
+                <input id="enter-name" type="text" class="form-control my-2">
+                <button id="start" class="btn btn-dark my-2 p-2">START</button>
+            </form>
+        </div>
+        <footer>
+            <div class="copyright">
+                Copyright © 2022 Harinder_project - All rights reserved.
+            </div>
+        </footer>
+    </div>
+    <script src="common.js"></script>
+    <script src="./assets/bootstrap.bundle.min.js"></script>
+    <script>
+        let name = localStorage.getItem('name');
+
+        function shuffle(array) {
+            let currentIndex = array.length, randomIndex;
+
+            // While there remain elements to shuffle.
+            while (currentIndex != 0) {
+
+                // Pick a remaining element.
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+
+                // And swap it with the current element.
+                [array[currentIndex], array[randomIndex]] = [
+                    array[randomIndex], array[currentIndex]];
+            }
+            return array;
+        }
+
+        document.getElementById('start').addEventListener('click', () => {
+            name = document.getElementById('enter-name').value;
+            localStorage.setItem("name", name);
+            console.log(name);
+            document.getElementsByClassName("popup")[0].className = "popup hide";
+            localStorage.setItem("isQuizGoing", true);
+            localStorage.setItem("currentQue", 1);
+            localStorage.setItem("score", 0);
+            localStorage.setItem("result", false);
+            location.reload();
+        }
+        )
+        document.getElementById('try-again-btn').addEventListener('click', () => {
+            localStorage.setItem("isQuizGoing", true);
+            localStorage.setItem("currentQue", 1);
+            localStorage.setItem("score", 0);
+            localStorage.setItem("result", false);
+            javaQuestions = shuffle(javaQuestions);
+            location.reload();
+        }
+        )
+        const isQuizGoing = localStorage.getItem("isQuizGoing") ? localStorage.getItem("isQuizGoing") : false;
+        let currentQue = localStorage.getItem("currentQue") ? localStorage.getItem("currentQue") : null;
+        let score = localStorage.getItem("score") ? localStorage.getItem("score") : null;
+        console.log(currentQue);
+        console.log(isQuizGoing);
+        document.getElementById('welcome').innerHTML = name && 'Hello ' + localStorage.getItem('name')
+        //storing java quiz question and answer
+        let userInput = false;
+        let optionChoosed;
+        let queNo = 0;
+        let result = 0;
+        
+        let javaQuestionsNormal = [{
+            que: "Java is a Successor to which programming language?",
+            option: ["B", "C", "C++", "D"],
+            ans: "C++"
+        },
+        {
+            que: "Who invented Java language?",
+            option: ["Dennis Ritchie", "James Gosling", "Larry Page", "Serge Page"],
+            ans: "James Gosling"
+        },
+        {
+            que: "What is the original name of Java Programming language?",
+            option: ["J++", "C++", "OAK", "TEAK"],
+            ans: "OAK"
+        },
+        {
+            que: "Which laboratory was Java invented or developed in?",
+            option: ["Bell Laboratory", "Sun Microsystems", "Dennis Ritchie Office", "Johnson and Johnson"],
+            ans: "Sun Microsystems"
+        },
+        {
+            que: "The name JAVA is known to the world as?",
+            option: ["A Tea Brand in India", "A Coffee Brand in Africa", "An Island in Indonesia", "Ragi Malt Juice"],
+            ans: "A Coffee Brand in Africa"
+        },
+        {
+            que: "Java language was originally developed for operating??",
+            option: ["TV", "TV Set-top box", " Embedded System equipment", "All the above"],
+            ans: "All the above"
+        },
+        {
+            que: "What type of Java Programs can be run inside a Java supported Web Browser?",
+            option: ["Stand alone", " Struts", " Applets", "AWT"],
+            ans: "Applets"
+        }, 
+
+        {
+            que: "Which company owns Java at present?",
+            option: ["IBM", "Microsoft", "Sun Microsystems  ", "Oracle"],
+            ans: "Oracle"
+        },
+        {
+            que: "What was the reason for huge initial success of Java?",
+            option: ["WWW (World Wide Web)", "Smart TV Evolution", ") Smart Home Automation  ", "None of the above"],
+            ans: "WWW (World Wide Web)"
+        },
+        {
+            que: "Computer Viruses and Trojans are often transmitted along with which files?",
+            option: ["JPG files", "TXT files", "EXE files ", ".ICO files"],
+            ans: "EXE files"
+        },
+
+        {
+            que: "What is an Interpreter?",
+            option: ["An interpreter converts instructions line by line", "An Interpreter converts source code to low-level code", "Interpreters are slow to execute  ", "All the above"],
+            ans: "All the above"
+        },
+
+        {
+            que: "What is a Compiler?",
+            option: ["A Compiler converts all instructions in one go.", "A compiler converts source code to low-level code", "Compilers work fast  ", "All the above"],
+            ans: "All the above"
+        },
+
+        {
+            que: "What is the file name extension of a Java source program?",
+            option: [".j", ".ja", ".java", ".jax"],
+            ans: ".java"
+        },
+
+        {
+            que: "Choose a correct statement about Java source files.",
+            option: ["Java files are human readable", "Java files contain Classes with Methods and Variables","Import statements import library Classes into our class  ", "All the above"],
+            ans: "All the above"
+        },
+
+        {
+            que: "What is the output of Compilation of Java Program?",
+            option: [".class file", ".cla file", ".jc file", ".javax file"],
+            ans: ".class file"
+        },
+
+        {
+            que: "Byte code is the result of?",
+            option: ["Compiling a Java file", "Compiling a Class file", "Interpreting a Java File ", "Interpreting a Class file"],
+            ans: "Compiling a Java file"
+        },
+
+        {
+            que: "What software compiles a Java Program?",
+            option: ["JRE (Java Runtime Environment)", "JDK (Java Developer Kit)", "JVM (Java Virtual Machine)", "Command Prompt"],
+            ans: "JDK (Java Developer Kit)"
+        },
+
+        {
+            que: ") What software runs a Java program on a computer?",
+            option: ["JRE (Java Runtime Environment)", "JDK (Java Developer Kit)", "Command Prompt", "None of the above"],
+            ans: "JRE (Java Runtime Environment)"
+        },
+
+        {
+            que: "When was first Version of Java i.e Java 1.0 was released?",
+            option: ["1991", "1994", "1996", "1999"],
+            ans: "1996"
+        },
+        
+        {
+            que: "What is JIT in Java?",
+            option: ["Java In Timer", "Java In Time Thread", "Just In Time Compiler", "Just In Time Runnable"],
+            ans: "Just In Time Compiler"
+        },
+
+
+        {
+            que: "What are the main Distribution types of Java Software?",
+            option: ["Java SE (Java Standard Edition)", "Java EE (Java Enterprise Edition)", "Java ME (Java Micro Edition)", "All the above"],
+            ans: "All the above"
+        },
+
+
+        {
+            que: "What is the Java distribution type used to build Web Apps in Java?",
+            option: ["Java SE", "Java EE", "Java ME", "Java Embedded"],
+            ans: "Java EE"
+        },
+
+        {
+            que: "What is the Java command used to compile a java program from Command Line or Command Prompt or CMD?",
+            option: [">java hello.java", ">javac hello.java", ">javacomp hello.java ", ">javacmd hello.java"],
+            ans: ">javac hello.java"
+        },
+
+        {
+            que: "What is the command used to Run a Java program form Command Line or Command Prompt or CMD?",
+            option: ["javac hello", "java hello.class ", "java hello", "java hello.java"],
+            ans: "java hello"
+        },
+
+        ]
+
+        javaQuestions = shuffle(javaQuestionsNormal);
+
+        let question = document.createElement('div');
+        question.className = "question hide";
+        let queElement = document.createElement('label');
+        let ansElement = document.createElement('ol');
+        let op1 = document.createElement('li');
+        let op2 = document.createElement('li');
+        let op3 = document.createElement('li');
+        let op4 = document.createElement('li');
+        queElement.className = "que";
+        ansElement.className = "ans";
+        op1.id = "op1";
+        op2.id = "op2";
+        op3.id = "op3";
+        op4.id = "op4";
+        op1.className = "option form-control";
+        op2.className = "option form-control";
+        op3.className = "option form-control";
+        op4.className = "option form-control";
+        question.appendChild(queElement);
+        question.appendChild(ansElement);
+        ansElement.appendChild(op1);
+        ansElement.appendChild(op2);
+        ansElement.appendChild(op3);
+        ansElement.appendChild(op4);
+
+        const loadQuestion = (n) => {
+            let item = javaQuestions[n - 1];
+            if (n <= 10) {
+                queElement.innerText = n + ". " + item.que;
+                item.option.map((item2, i) => {
+                    ansElement.childNodes[i].innerText = item2;
+                }
+                )
+            } else {
+                let element = document.getElementById('result-text');
+                let element2 = document.getElementById('result');
+                element.innerText = localStorage.getItem("name") + " your score is " + localStorage.getItem("score") + " out of 10";
+                localStorage.setItem("result", true);
+                localStorage.setItem("isQuizGoing", false);
+                question.className = "question hide";
+                element2.className = "show";
+            }
+        }
+        console.log(document.getElementById('result'));
+        currentQue && isQuizGoing === 'true' && loadQuestion(currentQue);
+
+        const nextQuestion = (option) => {
+            let item = javaQuestions[currentQue - 1];
+            console.log(item.ans);
+            console.log(item.option[option]);
+            if (item) {
+                if (item.ans === item.option[option]) {
+                    score++;
+                    localStorage.setItem("score", score);
+                }
+            }
+            currentQue++;
+            localStorage.setItem("currentQue", currentQue);
+            console.log(localStorage.getItem("score"));
+            console.log(localStorage.getItem("currentQue"));
+            loadQuestion(localStorage.getItem("currentQue"))
+        }
+
+        !isQuizGoing && shuffle(javaQuestions);
+        console.log(javaQuestions);
+        op1.addEventListener('click', () => {
+            optionChoosed = 0;
+            nextQuestion(optionChoosed)
+        })
+        op2.addEventListener('click', () => {
+            optionChoosed = 1;
+            nextQuestion(optionChoosed)
+        })
+        op3.addEventListener('click', () => {
+            optionChoosed = 2;
+            nextQuestion(optionChoosed)
+        })
+        op4.addEventListener('click', () => {
+            optionChoosed = 3;
+            nextQuestion(optionChoosed)
+        })
+        document.getElementById('que-body').appendChild(question);
+
+        if (isQuizGoing === 'true') {
+            question.className = "question show";
+        }
+        else {
+            question.className = "question hide";
+        }
+        if (!name) {
+            document.getElementsByClassName("popup")[0].className = "popup show";
+        }
+        if (localStorage.getItem("result") === 'true') {
+            let element = document.getElementById('result-text');
+            let element2 = document.getElementById('result');
+            console.log(element)
+            element.innerText = localStorage.getItem("name") + " your score is " + localStorage.getItem("score") + " out of 10";
+            element2.className = "show";
+        }
+    </script>
+</body>
+
+</html

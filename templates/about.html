@@ -1,0 +1,66 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <link rel="stylesheet" href="../main.css" />
+      <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+    <link rel="stylesheet" href="../about.css">    </head>
+    <body> 
+      <header>
+        <nav>
+          <ul>
+            <li><a href="#" id="item1">Home</a></li>
+            <li><a href="#" id="item2">Leaderboard</a></li>
+            <li><a href="#" id="item3">About</a></li>
+          </ul>
+        </nav>
+      </header> 
+      <div id="about-page">
+        <div id="project-description">
+          <div id="project-text">
+            Project-I of MCA- 2nd Sem (Session 2021-22)
+            <br />
+            <strong>Developed by</strong>- Harinder
+            <br />
+            <strong>Roll No.</strong>- 21140
+            <br />
+            <strong>Supervisor</strong>- Dr. Gopal Singh
+            <br />
+          </div>
+          <div id="developer">
+            <img src="images/profile.jpg" alt="profilePhoto" />
+            <span id="developer-text">
+              <span>Student MCA </span>
+              <span>M.D. University Rohtak, Haryana</span>
+            </span>
+          </div>
+          <div id="links" className="img-link">
+            <div id="imp-link" className="heading-red">Important Links</div>
+            <div id="github">
+              <img src="{{ url_for('static', filename='images/GITHUB.png') }}" alt="github" />
+              <span className="text">Github</span>
+            </div>
+            <div id="youtube">
+              <img src="{{ url_for('static', filename='images/youtube.png') }}" alt="github" />
+              <span className="text">Project Summary</span>
+            </div>
+          </div>
+        </div>
+        <div id="tech">
+          <div className="heading-white">Technologies Used</div>
+          <div id="tech-imgs">
+            <img src="{{ url_for('static', filename='images/css3.png') }}" alt="" className="tech-img" />
+            <img src="{{ url_for('static', filename='images/html5.png') }}" alt="" className="tech-img" />
+            <img src="{{ url_for('static', filename='images/javascript.png') }}" alt="" className="tech-img" />
+            <img src="{{ url_for('static', filename='images/python.png') }}" alt="" className="tech-img" />
+            <img src="{{ url_for('static', filename='images/python.png') }}" alt="" className="tech-img" />
+            <img src="{{ url_for('static', filename='images/python.png') }}" alt="" className="tech-img" />
+          </div>
+        </div>
+      </div>
+      <script src="{{ url_for('static', filename='javascript/common.js') }}"></script>
+    </body>
+    </html>
