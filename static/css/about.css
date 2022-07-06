@@ -70,3 +70,9 @@
   grid-template-columns: repeat(3, auto);
   column-gap: 2rem;
 }
+#link {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
