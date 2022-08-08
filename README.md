@@ -1,7 +1,15 @@
 # Programming Quiz
 ----
 ## This is my MCA 2nd Sem Minor Project
+
 [PLAY QUIZ](https://quiz-project-harinder.herokuapp.com/)
+## Technology Used In this project
+- Html
+- CSS
+- JavaScript
+#### Deloying This Project On Cloud I used
+- Flask
+- Herokuapp
 ![Front Page](https://user-images.githubusercontent.com/96901742/183342020-f6f96917-9e4d-4ebf-a9dd-2af18812b8e7.png)
 ----
 ### Enter Your Name
