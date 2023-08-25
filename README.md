@@ -25,5 +25,5 @@
 ### About Page
 ![About](https://user-images.githubusercontent.com/96901742/183346743-f7741915-fefd-4ecd-a164-eec87780a585.png)
 
-![WallPaper](https://github.com/harinder007/mca_quiz_project/assets/96901742/44bd7ecd-ab03-467d-bb0a-e147b991c46a)
+
 
